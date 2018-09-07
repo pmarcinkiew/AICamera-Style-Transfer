@@ -12,6 +12,7 @@ android {
         externalNativeBuild {
             cmake {
                 cppFlags "-frtti -fexceptions -std=c++11"
+                arguments "-DANDROID_STL=gnustl_shared"
             }
         }
         ndk {
@@ -19,6 +20,7 @@ android {
             // libraries Gradle should build and package with your APK.
             abiFilters  'armeabi-v7a'
         }
+        packagingOptions { pickFirst 'lib/armeabi-v7a/libgnustl_shared.so' }
     }
     buildTypes {
         release {
